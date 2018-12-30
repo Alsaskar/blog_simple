@@ -1,0 +1,39 @@
+{% include 'templates/head/head_dashboard.html' %}
+</head>
+<body>
+
+    {% include 'templates/header/header_dashboard.html' %}
+
+    <div class="container" style="margin-top: 2%;margin-bottom: 2%;">
+        <div class="card">
+            <div class="card-body">
+                <h3>Upload cover post</h3><hr>
+                <p>Judul : {{ getpost[0][1] }}</p>
+                <p>Kategori : {{ getpost[0][5] }}</p><hr>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                        {% if category == "error" %}
+                            <div class="alert alert-danger">{{ message }}</div>
+                        {% else %}
+                            <div class="alert alert-success">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <form action="" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="cover">Upload Cover</label><br>
+                        <input type="file" name="cover" id="cover" required>
+                    </div><hr>
+                    <div class="form-group">
+                        <button type="submit" name="upload" class="btn btn-secondary">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% include 'templates/footer/footer_dashboard.html' %}
+</body>
+</html>

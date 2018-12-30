@@ -1,0 +1,34 @@
+  {% include 'templates/head/head_index.html' %}
+  </head>
+  <body>
+
+  	{% include 'templates/header/header_index.html' %}
+
+    <div id="home_page">
+    	<h2>Blog Simple</h2>
+    	<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+    </div><br>
+
+    <div id="recent_post" style="margin-bottom: 2%;">
+      <h3 align="center">Recent Post</h3>
+      <div class="container-fluid">
+        <div class="row">
+          {% for row in getpost %}
+          <div class="col-md-4">
+            <div class="card">
+              <img class="card-img-top" src="/static/library/image/cover_post/{{ row[7] }}" style="height:300px">
+              <div class="card-body">
+                <h5 class="card-title"><a href="/view/post/{{ row[2] }}" style="color:black">{{row[1]}}</a></h5>
+                <p></p>
+                <a href="/view/post/{{ row[2] }}" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+  	{% include 'templates/footer/footer_index.html' %}
+  </body>
+</html>
